@@ -1,0 +1,18 @@
+{
+  "nextId": 2,
+  "settings": {
+    "monthlyIncome": 6000
+  },
+  "records": [
+    {
+      "id": 1,
+      "title": "Groceries",
+      "amount": 1200,
+      "type": "expense",
+      "category": "Food",
+      "date": "2026-07-04",
+      "notes": "Initial seed data",
+      "created_at": "2026-07-04T04:15:43.565Z"
+    }
+  ]
+}

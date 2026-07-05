@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Expense Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <div class="brand">
+        <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" rx="9" fill="#0F766E"/>
+          <path d="M11 22V12M17 22V9M23 22V15" stroke="#F0FDFA" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h1>Expense Tracker</h1>
+          <p class="subtitle">Track income, spending, and where your money goes</p>
+        </div>
+      </div>
+      <div class="income-control">
+        <label for="monthlyIncomeInput">Monthly income</label>
+        <form id="incomeForm">
+          <span class="currency-prefix">₹</span>
+          <input type="number" id="monthlyIncomeInput" placeholder="0" min="0" step="0.01" required />
+          <button type="submit" title="Save monthly income">Save</button>
+        </form>
+        <span id="incomeSavedMsg" class="income-saved-msg hidden">✓ Saved</span>
+      </div>
+    </header>
+
+    <section class="summary-cards">
+      <div class="card income">
+        <span class="card-label">Total Income</span>
+        <span class="card-value" id="totalIncome">₹0</span>
+      </div>
+      <div class="card expense">
+        <span class="card-label">Total Expense</span>
+        <span class="card-value" id="totalExpense">₹0</span>
+      </div>
+      <div class="card balance">
+        <span class="card-label">Balance</span>
+        <span class="card-value" id="balance">₹0</span>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2 id="formTitle">Add New Entry</h2>
+      <form id="expenseForm">
+        <input type="hidden" id="expenseId" />
+        <div class="form-row">
+          <input type="text" id="title" placeholder="Title (e.g. Groceries)" required />
+          <input type="number" id="amount" placeholder="Amount" min="0.01" step="0.01" required />
+        </div>
+        <div class="form-row">
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+          <input type="text" id="category" placeholder="Category (e.g. Food)" />
+          <input type="date" id="date" required />
+        </div>
+        <div class="form-row">
+          <input type="text" id="notes" placeholder="Notes (optional)" />
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn-primary">Add Entry</button>
+          <button type="button" id="cancelEditBtn" class="btn-secondary hidden">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <div class="list-header">
+        <h2>Transactions</h2>
+        <div class="list-controls">
+          <input type="text" id="searchBox" placeholder="Search title or notes..." />
+          <select id="filterType">
+            <option value="">All Types</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <button id="refreshBtn" class="btn-secondary">Refresh</button>
+          <button id="exportBtn" class="btn-export">Export to Excel</button>
+        </div>
+      </div>
+
+      <table id="expenseTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="expenseTableBody">
+          <!-- Rows injected by app.js -->
+        </tbody>
+      </table>
+      <p id="emptyMessage" class="hidden">No transactions yet — add your first one above.</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
