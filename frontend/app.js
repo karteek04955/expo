@@ -1,8 +1,8 @@
 // app.js
 // Talks to the Expense Tracker backend API and renders the UI.
 
-const API_BASE = "/api/expenses";
-const SETTINGS_BASE = "/api/settings";
+const API_BASE = "https://expo-1tg4.onrender.com/api/expenses";
+const SETTINGS_BASE = "https://expo-1tg4.onrender.com/api/settings";
 
 // DOM references
 const form = document.getElementById("expenseForm");
